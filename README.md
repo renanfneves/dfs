@@ -1,81 +1,51 @@
-# Turborepo starter
+# Deutsche Fintech Solutions - Chat
 
-This is an official starter Turborepo.
+Hello dear candidate,
 
-## Using this example
+we are pleased you are reading this, which means your profile attracted us and we are keen to see your skills in practice.
 
-Run the following command:
+How to approach this challenge:
 
-```sh
-npx create-turbo@latest
-```
+If your skills are more focused on Frontend Development, then please focus on Frontend and do a simple Backend.
+If your skills are more focused on Backend Development, then please focus on Backend and do a simple Frontend.
+If your skills are focused on both, as Fullstack, then please provide a more complete solution in both parts.
 
-## What's inside?
+For this we kindly ask you to demonstrate your solution for the following situation.
 
-This Turborepo includes the following packages/apps:
+You need to develop a simple microservice in Nodejs using Typescript which will allow users to chat with one of customer service in order to chose a topic
 
-### Apps and Packages
+The API must have at least 2 endpoints: one to return which is the person that should chat with the user, and the second should return a set of topics which user can chose. These topics should have some listed suggestion as well. Tree of nodes with suggestions should not have more than 2 level depth
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Frontend should be done using Angular or React (preferably latest releases because for us it is important to keep things up-to-date) with Typescript
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+The application should have a chat button, which when clicked should open a modal and do a request toward the first endpoint to get who from customer service people is free and then display this person's name in the header of modal
 
-### Utilities
+After the customer service person was chosen, from the tree of topics/suggestions display root topics and let the user click the topic. After the topic is chosen, display the answer. This process should continue until the depth is reached.
 
-This Turborepo has some additional tools already setup for you:
+When depth is reached, display a thank you message.
+Good styling is not a must, but feel free to use whatever suits your preference (if you have Frontend focused challenge)
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Extra requirements:
 
-### Build
+Every piece of logic should be tested with unit test
+Behaviour of system should be tested with e2e test
+Write a Github action to run a simple pipeline that contains all requirements above
 
-To build all apps and packages, run the following command:
+Example of Topic/Suggestions Tree:
 
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- Football 
+  - Premier League
+    - Liverpool
+    - Man. UTD
+    - Man. City
+  - Seria A
+    - Milan
+    - Inter
+    - Juventus
+- Books
+  - Investment
+    - The Intelligent Investor - Benjamin Graham
+    - Rich Dad, Poor Dad - Robert Kiyosaki
+  - Children
+    - Momo - Micheal Ende
+    - BFG - Roald Dahl
