@@ -28,7 +28,7 @@ Good styling is not a must, but feel free to use whatever suits your preference 
 Extra requirements:
 
 Every piece of logic should be tested with unit test
-Behaviour of system should be tested with e2e test
+Behavior of system should be tested with e2e test
 Write a Github action to run a simple pipeline that contains all requirements above
 
 Example of Topic/Suggestions Tree:

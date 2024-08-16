@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Agent {
+  id     String  @id @default(cuid())
+  name   String  @unique
+  active Boolean @default(true)
+
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+  ChatSession ChatSession[]
+
+  @@map("agents")
+}
+
+model TopicCategory {
+  id     String  @id @default(cuid())
+  name   String  @unique
+  topics Topic[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("topics_categories")
+}
+
+model Topic {
+  id String @id @default(cuid())
+
+  topicCategoryId String
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  category    TopicCategory @relation(fields: [topicCategoryId], references: [id])
+  subTopics   SubTopic[]
+  ChatSession ChatSession[]
+
+  @@map("topics")
+}
+
+model SubTopic {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  suggestions String[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  topic       Topic         @relation(fields: [topicId], references: [id])
+  topicId     String
+  ChatSession ChatSession[]
+
+  @@map("sub_topics")
+}
+
+enum ChatSessionStatus {
+  open
+  inProgress
+  closed
+}
+
+model ChatSession {
+  id String @id @default(cuid())
+
+  topicId    String
+  subTopicId String
+
+  chosenSubject String
+
+  agentId String
+  userId  String
+
+  status ChatSessionStatus
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  topic    Topic    @relation(fields: [topicId], references: [id])
+  subTopic SubTopic @relation(fields: [subTopicId], references: [id])
+  agent    Agent    @relation(fields: [agentId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+
+  @@index([agentId, userId])
+  @@map("chat_sessions")
+}
+
+model User {
+  id          String        @id @default(cuid())
+  encryptedIp String        @unique
+  createdAt   DateTime      @default(now())
+  ChatSession ChatSession[]
+}

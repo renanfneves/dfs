@@ -1,4 +1,10 @@
 {
   "extends": "@dfs/tsconfig/node.json",
   "include": ["src/**/*"],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*", "@types/*.d.ts"]
+    },
+  }
 }
