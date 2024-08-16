@@ -7,17 +7,15 @@
     "module": "node16",
     "target": "es2022",
     "moduleResolution": "node16",
-    
+
     "strict": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    
+   
     "types": [
       "vitest/globals"
     ],
-
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]

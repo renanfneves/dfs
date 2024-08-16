@@ -12,7 +12,7 @@ export async function authenticateWithIp(app: FastifyInstance) {
         tags: ['Users'],
         summary: 'Authenticate with User IP Address',
         body: z.object({
-          ip: z.string(),
+          ip: z.string().ip({ version: 'v4' }),
         }),
         response: {
           201: z.object({
