@@ -1,3 +1,5 @@
+import { Agent } from "../aggregates/agent"
+
 export interface AgentsRepository {
-  exists(id: string): Promise<boolean>
+  getByName(name: string): Promise<Agent | null>
 }

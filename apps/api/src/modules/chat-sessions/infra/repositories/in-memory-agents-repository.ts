@@ -6,7 +6,9 @@ export class InMemoryAgentsRepository implements AgentsRepository {
     new Agent('a1c6492c-ae5d-4d6e-a612-87a51519fb64', 'John Doe'),
   ]
 
-  async exists(id: string) {
-    return this.agents.some((agent) => agent.id === id)
+  async getByName(name: string) {
+    const agent = this.agents.find((agent) => agent.name === name)
+
+    return agent || null
   }
 }

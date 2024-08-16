@@ -7,7 +7,7 @@ import { UsersRepository } from '@/modules/chat-sessions/domain/repositories/use
 
 export interface Input {
   userId: string
-  agentId: string
+  agent: string
   topicId: string
   subTopicId: string
   chosenSubject: string
@@ -23,11 +23,18 @@ export class CreateChatSessionUseCase {
 
   async execute({
     userId,
-    agentId,
+    agent,
     topicId,
     subTopicId,
     chosenSubject,
   }: Input): Promise<void> {
+    const existingAgent = await this.agentsRepository.getByName(agent)
+    const userExists = await this.usersRepository.exists(userId)
+
+    if (!existingAgent || !userExists) {
+      throw new UnprocessableEntityError('Invalid entity')
+    }
+
     const topic = await this.topicsRepository.getById(topicId)
 
     if (!topic) {
@@ -46,18 +53,11 @@ export class CreateChatSessionUseCase {
       throw new UnprocessableEntityError('Invalid chosen subject')
     }
 
-    const agentExists = await this.agentsRepository.exists(agentId)
-    const userExists = await this.usersRepository.exists(userId)
-
-    if (!agentExists || !userExists) {
-      throw new UnprocessableEntityError('Invalid entity')
-    }
-
     const chatSession = ChatSession.create(
       topic.id,
       subTopic.id,
       chosenSubject,
-      agentId,
+      existingAgent.id,
       userId,
     )
 

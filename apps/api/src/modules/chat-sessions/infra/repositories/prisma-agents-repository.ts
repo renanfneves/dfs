@@ -1,12 +1,13 @@
 import { prisma } from '@/lib/prisma'
 import { AgentsRepository } from '@/modules/chat-sessions/domain/repositories/agents-repository'
+import { Agent } from '@/modules/chat-sessions/domain/aggregates/agent'
 
 export class PrismaAgentsRepository implements AgentsRepository {
-  async exists(id: string): Promise<boolean> {
+  async getByName(name: string) {
     const agent = await prisma.agent.findUnique({
-      where: { id },
+      where: { name },
     })
 
-    return !!agent
+    return agent
   }
 }
