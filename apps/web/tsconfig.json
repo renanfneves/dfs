@@ -1,7 +1,18 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.vite.json" }
-  ]
+  "extends": "@dfs/tsconfig/react.json",
+  "include": [
+    "src/**/*",
+    "@types/*.d.ts"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "typeRoots": [
+      "./src/@types"
+    ]
+  }
 }

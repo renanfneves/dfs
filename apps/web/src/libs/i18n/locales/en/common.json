@@ -1,0 +1,11 @@
+{
+  "go_to_home": "Go to home",
+  "error_boundary": {
+    "title": "Something went wrong",
+    "description": "An error occurred while rendering this page. Please try again later."
+  },
+  "not_found": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist."
+  }
+}

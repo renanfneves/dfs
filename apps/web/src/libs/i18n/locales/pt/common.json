@@ -1,0 +1,11 @@
+{
+  "go_to_home": "Ir para a página inicial",
+  "error_boundary": {
+    "title": "Algo deu errado",
+    "description": "Por favor, recarregue a página e tente novamente."
+  },
+  "not_found": {
+    "title": "Página não encontrada",
+    "description": "A página que você está procurando não existe."
+  }
+}

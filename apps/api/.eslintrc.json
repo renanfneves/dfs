@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "@dfs/eslint-config/node"
+  ],
+  "rules": {
+    "prettier/prettier": "off"
+  }
+}

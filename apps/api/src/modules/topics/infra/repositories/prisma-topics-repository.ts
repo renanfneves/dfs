@@ -17,7 +17,7 @@ export class PrismaTopicsRepository implements TopicsRepository {
         topic.id,
         topic.category.name,
         topic.subTopics.map(
-          (subTopic) => new Subcategory(subTopic.name, subTopic.suggestions),
+          (subTopic) => new Subcategory(subTopic.id, subTopic.name, subTopic.suggestions),
         ),
       ),
     )

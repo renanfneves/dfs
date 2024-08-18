@@ -21,9 +21,11 @@ export async function getTopics(app: FastifyInstance) {
             200: z.object({
               topics: z.array(
                 z.object({
+                  id: z.string(),
                   category: z.string(),
                   subcategories: z.array(
                     z.object({
+                      id: z.string(),
                       name: z.string(),
                       suggestions: z.array(z.string()),
                     }),

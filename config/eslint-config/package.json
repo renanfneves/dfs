@@ -8,9 +8,9 @@
     "node.js"
   ],
   "devDependencies": {
+    "@dfs/prettier-config": "workspace:*",
     "@rocketseat/eslint-config": "^2.2.2",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "@dfs/prettier-config": "workspace:*"
+    "eslint-plugin-simple-import-sort": "^12.1.1"
   },
   "prettier": "@dfs/prettier-config",
   "eslintConfig": {
