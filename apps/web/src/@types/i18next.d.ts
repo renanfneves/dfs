@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { defaultNS } from '@/libs/i18n'
-import { common, customer_support } from '@/libs/i18n/locales/pt'
+import { common, customer_support } from '@/libs/i18n/locales/en'
 
 declare module 'i18next' {
   interface CustomTypeOptions {

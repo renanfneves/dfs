@@ -1,5 +1,5 @@
 {
-  "go_to_home": "Ir para a página inicial",
+  "next": "Next",
   "error_boundary": {
     "title": "Algo deu errado",
     "description": "Por favor, recarregue a página e tente novamente."

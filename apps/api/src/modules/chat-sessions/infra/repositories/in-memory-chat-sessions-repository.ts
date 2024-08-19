@@ -3,7 +3,7 @@ import { ChatSession } from '@/modules/chat-sessions/domain/aggregates/chat-sess
 import { ChatSessionsRepository } from '@/modules/chat-sessions/domain/repositories/chat-sessions-repository'
 
 export class InMemoryChatSessionsRepository implements ChatSessionsRepository {
-  private chatSessions: ChatSession[] = []
+  public chatSessions: ChatSession[] = []
 
   async create(chatSession: ChatSession): Promise<void> {
     this.chatSessions.push(chatSession)
@@ -19,11 +19,5 @@ export class InMemoryChatSessionsRepository implements ChatSessionsRepository {
     }
 
     this.chatSessions[index].status = chatSession.status
-  }
-
-  async getManyByUsedId(userId: string): Promise<ChatSession[]> {
-    return this.chatSessions.filter(
-      (chatSession) => chatSession.userId === userId,
-    )
   }
 }

@@ -2,21 +2,21 @@ import { HTMLAttributes } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
+import { DialogFooter } from '@/components/ui/dialog'
 import { useChangeTransitionStep } from '@/components/ui/group-transition/hooks/useChangeTransitionStep'
+import { Trans, useTranslation } from '@/libs/i18n'
+import { cn } from '@/libs/tailwind/utils'
 import { ChatForm } from '@/modules/customer-support/hooks/use-chat-form'
-import { useTopic } from '@/modules/customer-support/hooks/use-topic'
 
 export function SubTopicSelection({
   className,
 }: HTMLAttributes<HTMLDivElement>) {
-  const { getTopicById } = useTopic()
+  const { t } = useTranslation()
   const { setValue, watch } = useFormContext<ChatForm>()
+  const chosenTopic = watch('topic')
 
   const { navigateToNextComponent, navigateToPreviousComponent } =
     useChangeTransitionStep<ChatSteps>()
-
-  const topicId = watch('topicId')
-  const chosenTopic = getTopicById(topicId)
 
   function setChosenSubTopic(subTopicId: string) {
     setValue('subTopicId', subTopicId)
@@ -24,29 +24,37 @@ export function SubTopicSelection({
   }
 
   return (
-    <section className={className}>
+    <section className={cn('space-y-4', className)}>
       <p>
-        Agora que você escolheu o topic {chosenTopic?.category}, vamos escolher
-        um sub tópico
+        <Trans
+          i18nKey="steps.subtopic_selection.description"
+          components={{ strong: <strong /> }}
+          ns="customer_support"
+          values={{ topic: chosenTopic.category }}
+        />
       </p>
-      <ul>
+      <ul className="space-y-2">
         {chosenTopic?.subcategories.map((subcategory) => (
           <li key={subcategory.id}>
-            <button
+            <Button
               type="button"
+              variant="box"
               onClick={() => setChosenSubTopic(subcategory.id)}
             >
               {subcategory.name}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
-      <Button
-        type="button"
-        onClick={() => navigateToPreviousComponent('topic-selection')}
-      >
-        previous
-      </Button>
+      <DialogFooter className="sm:justify-start">
+        <Button
+          type="button"
+          variant="link"
+          onClick={() => navigateToPreviousComponent('topic-selection')}
+        >
+          {t('previous')}
+        </Button>
+      </DialogFooter>
     </section>
   )
 }

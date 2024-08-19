@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query"
 
-import { QUERY_KEYS } from "@/libs/react-query/query-keys";
+import { QUERY_KEYS } from "@/libs/react-query/query-keys"
 
-import { getTopicsApi } from "../api/get-topics-api";
+import { getTopicsApi } from "../api/get-topics-api"
 
 export function useTopics() {
   const { data, ...state } = useQuery({
@@ -15,5 +15,5 @@ export function useTopics() {
   return {
     topics,
     ...state
-  };
+  }
 }

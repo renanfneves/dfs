@@ -11,7 +11,7 @@ export class PrismaChatSessionsRepository implements ChatSessionsRepository {
     await prisma.chatSession.create({
       data: {
         agentId: chatSession.agentId,
-        userId: chatSession.userId,
+        email: chatSession.email,
         topicId: chatSession.topicId,
         subTopicId: chatSession.subTopicId,
         chosenSubject: chatSession.chosenSubject,
@@ -28,30 +28,6 @@ export class PrismaChatSessionsRepository implements ChatSessionsRepository {
       data: {
         status,
       },
-    })
-  }
-
-  async getManyByUsedId(userId: string) {
-    const data = await prisma.chatSession.findMany({
-      where: {
-        userId,
-      },
-    })
-
-    if (!data.length) {
-      return []
-    }
-
-    return data.map((chatSession) => {
-      return ChatSession.restore(
-        chatSession.id,
-        chatSession.agentId,
-        chatSession.userId,
-        chatSession.topicId,
-        chatSession.subTopicId,
-        chatSession.chosenSubject,
-        chatSession.status,
-      )
     })
   }
 

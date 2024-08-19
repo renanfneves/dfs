@@ -1,4 +1,5 @@
 import { ElementType, useCallback } from 'react'
+import { TransitionGroup } from 'react-transition-group'
 
 import { cn } from '@/libs/tailwind/utils'
 
@@ -30,7 +31,7 @@ export function GroupTransition<TransitionStep>({
   )
 
   return (
-    <div className="relative w-full">
+    <TransitionGroup className="relative w-full overflow-hidden">
       {components.map(({ Component, key }) => {
         const animationClass = setAnimationClass(key)
         const componentClass = cn(
@@ -48,6 +49,6 @@ export function GroupTransition<TransitionStep>({
           </CSSTransitionWrapper>
         )
       })}
-    </div>
+    </TransitionGroup>
   )
 }

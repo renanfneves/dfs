@@ -38,7 +38,6 @@ After succeeding the `Steps to Init` you are able to run this API locally or wit
 
 ## Endpoints
 
-- POST `/users/authenticate-with-ip` (it generates a authentication token to user from his ip address)
 - GET `/agents/available` (it returns the agent less busy at the time)
 - GET `/topics` (it returns the list of fixed topics)
 - POST `/chat-sessions` (it creates a new chat session to link user, agent and chosen topic)
@@ -73,20 +72,3 @@ After succeeding the `Steps to Init` you are able to run this API locally or wit
 
 - There will be two related tables in this process: agents and chat_sessions.
 - The balancing will be done through an SQL query that selects the first agent with a left join of the tables, ordering in ascending order by the number of active sessions for each agent.
-
-# Challenge 2: Save Chat Session Data for Future User Interaction
-
-- During the process of choosing the topic and subject, this data, along with the selected agent, should be saved.
-- If in the future the agent wants to follow up with the user, it will be necessary to identify the user responsible for the request.
-- In the context of this test, saving this data or user authentication was not required. As a self-challenge, I decided to persist the chat data.
-
-## Criteria for the Solution
-
-- There should be a way to identify the user without creating an authentication step that requires user interaction.
-- New users should be able to request the chat without needing to sign up.
-
-## Solution
-
-- Create an authentication API based on the user's IP.
-- When accessing for the first time, the user's IP should be persisted, and an ID should be generated for future requests.
-- To comply with GDPR rules, the user's IP cannot be persisted in its real value. This was resolved by persisting the encrypted IP in such a way that it always has the same value when encrypted.

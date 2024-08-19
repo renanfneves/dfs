@@ -3,10 +3,9 @@ import { ChatSession } from '@/modules/chat-sessions/domain/aggregates/chat-sess
 import { AgentsRepository } from '@/modules/chat-sessions/domain/repositories/agents-repository'
 import { ChatSessionsRepository } from '@/modules/chat-sessions/domain/repositories/chat-sessions-repository'
 import { TopicsRepository } from '@/modules/chat-sessions/domain/repositories/topics-repository'
-import { UsersRepository } from '@/modules/chat-sessions/domain/repositories/users-repository'
 
 export interface Input {
-  userId: string
+  email: string
   agent: string
   topicId: string
   subTopicId: string
@@ -18,20 +17,18 @@ export class CreateChatSessionUseCase {
     private readonly chatSessionsRepository: ChatSessionsRepository,
     private readonly topicsRepository: TopicsRepository,
     private readonly agentsRepository: AgentsRepository,
-    private readonly usersRepository: UsersRepository,
-  ) {}
+  ) { }
 
   async execute({
-    userId,
+    email,
     agent,
     topicId,
     subTopicId,
     chosenSubject,
   }: Input): Promise<void> {
     const existingAgent = await this.agentsRepository.getByName(agent)
-    const userExists = await this.usersRepository.exists(userId)
 
-    if (!existingAgent || !userExists) {
+    if (!existingAgent) {
       throw new UnprocessableEntityError('Invalid entity')
     }
 
@@ -58,7 +55,7 @@ export class CreateChatSessionUseCase {
       subTopic.id,
       chosenSubject,
       existingAgent.id,
-      userId,
+      email,
     )
 
     await this.chatSessionsRepository.create(chatSession)

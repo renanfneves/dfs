@@ -71,11 +71,11 @@ model ChatSession {
 
   topicId    String
   subTopicId String
+  email      String
 
   chosenSubject String
 
   agentId String
-  userId  String
 
   status ChatSessionStatus
 
@@ -85,15 +85,6 @@ model ChatSession {
   topic    Topic    @relation(fields: [topicId], references: [id])
   subTopic SubTopic @relation(fields: [subTopicId], references: [id])
   agent    Agent    @relation(fields: [agentId], references: [id])
-  user     User     @relation(fields: [userId], references: [id])
 
-  @@index([agentId, userId])
   @@map("chat_sessions")
-}
-
-model User {
-  id          String        @id @default(cuid())
-  encryptedIp String        @unique
-  createdAt   DateTime      @default(now())
-  ChatSession ChatSession[]
 }

@@ -1,3 +1,31 @@
 {
-  "title": "Customer Support"
+  "title": "Customer Support",
+  "description": "Here you can find the answers to the most frequently asked questions. Click on the button below to talk with one of our agents",
+  "steps": {
+    "agent_greetings": {
+      "welcome": "Hello! I am {{agent}} and I am here to help you with your queries",
+      "description": "Let us start?",
+      "start_chat": "Start Chat"
+    },
+    "topic_selection": {
+      "description": "The first step is to select a topic below you need help with"
+    },
+    "subtopic_selection": {
+      "description": "Now that you have selected the <strong>{{topic}}</strong>, please select the subtopic you need help with"
+    },
+    "subject_selection": {
+      "title": "Subject Selection",
+      "description": "Excellent! We are almost there. Please pick a subject withing the subtopic <strong>{{subtopic}}</strong>"
+    },
+    "choices_summary": {
+      "thanks_message": "Thank you for chatting with us!",
+      "choices": "Here are your choices",
+      "ask_for_email": "Write your email address below to send your chat request",
+      "submit": "send chat request"
+    }
+  },
+  "response_feedbacks": {
+    "error": "An error occurred while saving chat request. Please try again later",
+    "success": "Thank you for chatting with us! We hope we have helped you with your queries. Have a great day!"
+  }
 }

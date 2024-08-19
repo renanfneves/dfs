@@ -26,4 +26,3 @@ type Topic = {
   category: string
   subcategories: SubTopic[]
 }
-

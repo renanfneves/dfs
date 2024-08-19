@@ -1,5 +1,5 @@
 {
-  "go_to_home": "Go to home",
+  "previous": "previous",
   "error_boundary": {
     "title": "Something went wrong",
     "description": "An error occurred while rendering this page. Please try again later."

@@ -16,13 +16,18 @@ You need to develop a simple microservice in Nodejs using Typescript which will 
 
 The API must have at least 2 endpoints: one to return which is the person that should chat with the user, and the second should return a set of topics which user can chose. These topics should have some listed suggestion as well. Tree of nodes with suggestions should not have more than 2 level depth
 
-Frontend should be done using Angular or React (preferably latest releases because for us it is important to keep things up-to-date) with Typescript
+## Frontend
 
-The application should have a chat button, which when clicked should open a modal and do a request toward the first endpoint to get who from customer service people is free and then display this person's name in the header of modal
+- should be done using Angular or React (preferably latest releases because for us it is important to keep things up-to-date) with Typescript
 
-After the customer service person was chosen, from the tree of topics/suggestions display root topics and let the user click the topic. After the topic is chosen, display the answer. This process should continue until the depth is reached.
+- the application should have a chat button, which when clicked should open a modal and do a request toward the first endpoint to get who from customer service people is free and then display this person's name in the header of modal
 
-When depth is reached, display a thank you message.
+- after the customer service person was chosen, from the tree of topics/suggestions display root topics and let the user click the topic.
+
+- after the topic is chosen, display the answer. This process should continue until the depth is reached.
+
+- when depth is reached, display a thank you message.
+
 Good styling is not a must, but feel free to use whatever suits your preference (if you have Frontend focused challenge)
 
 Extra requirements:
@@ -33,7 +38,7 @@ Write a Github action to run a simple pipeline that contains all requirements ab
 
 Example of Topic/Suggestions Tree:
 
-- Football 
+- Football
   - Premier League
     - Liverpool
     - Man. UTD

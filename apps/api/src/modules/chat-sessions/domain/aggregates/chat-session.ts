@@ -13,7 +13,7 @@ export class ChatSession {
     public readonly subTopicId: string,
     public readonly chosenSubject: string,
     public readonly agentId: string,
-    public readonly userId: string,
+    public readonly email: string,
     status: string,
   ) {
     this.status = ChatSessionStatusFactory.create(status, this)
@@ -24,7 +24,7 @@ export class ChatSession {
     subTopicId: string,
     chosenSubject: string,
     agentId: string,
-    userId: string,
+    email: string,
   ): ChatSession {
     const id = randomUUID()
     const status = 'open'
@@ -34,7 +34,7 @@ export class ChatSession {
       subTopicId,
       chosenSubject,
       agentId,
-      userId,
+      email,
       status,
     )
   }
@@ -45,7 +45,7 @@ export class ChatSession {
     subTopicId: string,
     chosenSubject: string,
     agentId: string,
-    userId: string,
+    email: string,
     status: string,
   ): ChatSession {
     return new ChatSession(
@@ -54,7 +54,7 @@ export class ChatSession {
       subTopicId,
       chosenSubject,
       agentId,
-      userId,
+      email,
       status,
     )
   }
