@@ -48,10 +48,7 @@ export function Chat() {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(submit)}>
         <GroupTransitionProvider<ChatSteps> initialStep="agent-greetings">
-          <GroupTransition<ChatSteps>
-            components={componentsSteps}
-            initialStep="agent-greetings"
-          />
+          <GroupTransition<ChatSteps> components={componentsSteps} />
         </GroupTransitionProvider>
       </form>
     </FormProvider>

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Link, useRouteError } from 'react-router-dom'
 
 import { useTranslation } from '@/libs/i18n'
@@ -15,6 +16,7 @@ export const ErrorBoundary = () => {
 
   return (
     <main className="relative flex min-h-screen w-full flex-col items-center justify-between bg-primary">
+      <Helmet title={t('error_boundary.title')} />
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-5xl text-white" data-testid="notFoundPageTitle">
           {t('error_boundary.title')}
@@ -27,7 +29,7 @@ export const ErrorBoundary = () => {
           className="text-zinc-200 underline"
           data-testid="goToForgotPasswordLink"
         >
-          {t('go_to_home')}
+          {t('go_home')}
         </Link>
       </div>
     </main>

@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import { DialogFooter } from '@/components/ui/dialog'
-import { useChangeTransitionStep } from '@/components/ui/group-transition/hooks/useChangeTransitionStep'
+import { useChangeTransitionStep } from '@/components/ui/group-transition/hooks/use-change-transition-step'
 import { useTranslation } from '@/libs/i18n'
 import { cn } from '@/libs/tailwind/utils'
 import { useAvailableAgent } from '@/modules/customer-support/hooks/use-available-agent'
@@ -27,6 +27,7 @@ export function AgentGreetings({ className }: HTMLAttributes<HTMLDivElement>) {
       <DialogFooter className="items-center sm:justify-between">
         <p>{t('steps.agent_greetings.description')}</p>
         <Button
+          data-testid="start-chat-btn"
           type="button"
           onClick={() => navigateToNextComponent('topic-selection')}
         >

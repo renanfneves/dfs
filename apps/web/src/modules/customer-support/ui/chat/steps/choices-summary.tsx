@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import { DialogFooter } from '@/components/ui/dialog'
-import { useChangeTransitionStep } from '@/components/ui/group-transition/hooks/useChangeTransitionStep'
+import { useChangeTransitionStep } from '@/components/ui/group-transition/hooks/use-change-transition-step'
 import { Input } from '@/components/ui/input'
 import { SummaryCard } from '@/components/ui/summary-card'
 import { useTranslation } from '@/libs/i18n'
@@ -31,7 +31,11 @@ export function ChoicesSummary() {
         <SummaryCard title="Subject" value={chosenSubject} />
       </div>
       <label htmlFor="email">{t('steps.choices_summary.ask_for_email')}</label>
-      <Input {...register('email')} placeholder="johndoe@email.com" />
+      <Input
+        {...register('email')}
+        placeholder="johndoe@email.com"
+        data-testid="email-input"
+      />
       <DialogFooter>
         <Button
           type="button"
@@ -40,7 +44,7 @@ export function ChoicesSummary() {
         >
           {t('previous', { ns: 'common' })}
         </Button>
-        <Button type="submit" disabled={isPending}>
+        <Button type="submit" disabled={isPending} data-testid="submit-btn">
           {t('steps.choices_summary.submit')}
         </Button>
       </DialogFooter>

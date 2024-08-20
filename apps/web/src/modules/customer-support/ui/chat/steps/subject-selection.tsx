@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import { DialogFooter } from '@/components/ui/dialog'
-import { useChangeTransitionStep } from '@/components/ui/group-transition/hooks/useChangeTransitionStep'
+import { useChangeTransitionStep } from '@/components/ui/group-transition/hooks/use-change-transition-step'
 import { Trans, useTranslation } from '@/libs/i18n'
 import { cn } from '@/libs/tailwind/utils'
 import { ChatForm } from '@/modules/customer-support/hooks/use-chat-form'

@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
   testDir: './src/libs/playwright/tests',
@@ -9,10 +9,12 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   use: {
     baseURL: 'http://localhost:9999',
+    locale: 'pt-BR',
+    timezoneId: 'America/Sao_Paulo',
   },
   webServer: {
     command: 'pnpm dev:test',
-    url: 'http://localhost:9999',
+    port: 9999,
     reuseExistingServer: !process.env.CI,
   },
 });

@@ -40,7 +40,7 @@ export function CustomerSupport() {
       <Helmet title={t('title')} />
       <Dialog onOpenChange={handleToggleModal} open={open}>
         <DialogTrigger asChild>
-          <Button variant="outline" className="gap-2">
+          <Button variant="outline" className="gap-2" data-testid="chat-btn">
             {t('chat')} <MessageSquare />
           </Button>
         </DialogTrigger>

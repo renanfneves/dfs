@@ -4,14 +4,13 @@ import { TransitionGroup } from 'react-transition-group'
 import { cn } from '@/libs/tailwind/utils'
 
 import { CSSTransitionWrapper } from './components/css-transition-wrapper'
-import { useChangeTransitionStep } from './hooks/useChangeTransitionStep'
+import { useChangeTransitionStep } from './hooks/use-change-transition-step'
 
 interface GroupTransitionProps<TransitionStep> {
   components: {
     Component: ElementType
     key: TransitionStep
   }[]
-  initialStep: TransitionStep
 }
 
 export function GroupTransition<TransitionStep>({

@@ -3,8 +3,6 @@ import { useCallback } from "react"
 import { useGroupTransitionContext } from "../context/group-transition-context";
 
 export function useChangeTransitionStep<TransitionStep>() {
-
-
   const {
     currentStep,
     enterAnimation,

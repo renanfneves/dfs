@@ -12,7 +12,7 @@ describe('SummaryCard', () => {
     const titleText = wrapper.getByText(title)
     const valueText = wrapper.getByText(value)
 
-    expect(titleText).toBeInTheDocument()
-    expect(valueText).toBeInTheDocument()
+    expect(titleText).toBeVisible()
+    expect(valueText).toBeVisible()
   })
 })

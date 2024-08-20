@@ -1,15 +1,25 @@
 {
   "extends": "@dfs/tsconfig/react.json",
-  "include": [
-    "src/**/*",
-    "@types/*.d.ts",
-  ],
   "compilerOptions": {
+    "types": [
+      "vitest/globals"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "public": [
+        "./public"
       ]
-    },
-  }
+    }
+  },
+  "include": [
+    "src",
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
