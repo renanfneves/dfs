@@ -1,5 +1,6 @@
 {
   "title": "Customer Support",
+  "chat": "Chat",
   "description": "Here you can find the answers to the most frequently asked questions. Click on the button below to talk with one of our agents",
   "steps": {
     "agent_greetings": {
@@ -26,6 +27,6 @@
   },
   "response_feedbacks": {
     "error": "An error occurred while saving chat request. Please try again later",
-    "success": "Thank you for chatting with us! We hope we have helped you with your queries. Have a great day!"
+    "success": "Chat request saved successfully. Have a great day!"
   }
 }

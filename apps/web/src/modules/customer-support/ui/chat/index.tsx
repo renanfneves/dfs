@@ -31,7 +31,7 @@ export function Chat() {
             })
           }
         })
-      }, 2000)
+      }, 1000)
 
       toast({
         description: t('response_feedbacks.success'),

@@ -14,7 +14,7 @@ http.all('*', (req) => {
 })
 
 export async function enableMSW() {
-  if (env.MODE !== 'CI') {
+  if (env.MODE !== 'test') {
     return
   }
 

@@ -1,4 +1,5 @@
 import { MessageSquare } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -9,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { useTranslation } from '@/libs/i18n'
 import { queryClient } from '@/libs/react-query/query-client'
 import { QUERY_KEYS } from '@/libs/react-query/query-keys'
 
@@ -18,6 +20,7 @@ import { usePrefetchTopics } from '../hooks/use-prefetch-topics'
 import { Chat } from './chat'
 
 export function CustomerSupport() {
+  const { t } = useTranslation('customer_support')
   usePrefetchTopics()
   const { toggleModal, open } = useChatModalState()
   const { agent } = useAvailableAgent(open)
@@ -34,10 +37,11 @@ export function CustomerSupport() {
 
   return (
     <div id="page" className="h-full">
+      <Helmet title={t('title')} />
       <Dialog onOpenChange={handleToggleModal} open={open}>
         <DialogTrigger asChild>
           <Button variant="outline" className="gap-2">
-            Chat <MessageSquare />
+            {t('chat')} <MessageSquare />
           </Button>
         </DialogTrigger>
         <DialogContent className="w-[27rem]">

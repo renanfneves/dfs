@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 const envSchema = z.object({
   VITE_API_BASE_URL: z.string(),
-  MODE: z.enum(['production', 'development', 'CI']),
+  MODE: z.enum(['production', 'development', 'test']),
 })
 
 const _env = envSchema.safeParse(import.meta.env)
