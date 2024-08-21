@@ -2,6 +2,7 @@
   "name": "dfs",
   "private": true,
   "scripts": {
+    "ci": "turbo run build lint test e2e:test",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",

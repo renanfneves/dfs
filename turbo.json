@@ -10,8 +10,8 @@
         ".env*"
       ],
       "outputs": [
-        ".next/**",
-        "!.next/cache/**"
+        "dist/**",
+        "build/**"
       ]
     },
     "lint": {
@@ -22,6 +22,16 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "e2e:test": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ]
     }
   }
 }
