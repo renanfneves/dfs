@@ -76,7 +76,7 @@ test('filling email allows to save chat request', async ({ page }) => {
 
   page.getByPlaceholder('johndoe@email.com').fill('johndoe@email.com')
   await page.getByRole('button', { name: 'send chat request' }).click()
-  await expect(page.getByText('Chat request saved')).toBeVisible()
+  await expect(page.getByText('Chat request saved successfully. Have a great day!', { exact: true })).toBeVisible()
 })
 
 test('toast message displays on saving chat request error', async ({ page }) => {

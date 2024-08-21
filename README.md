@@ -12,9 +12,11 @@ If your skills are focused on both, as Fullstack, then please provide a more com
 
 For this we kindly ask you to demonstrate your solution for the following situation.
 
-You need to develop a simple microservice in Nodejs using Typescript which will allow users to chat with one of customer service in order to chose a topic
+- You need to develop a simple microservice in Nodejs using Typescript which will allow users to chat with one of customer service in order to chose a topic
 
-The API must have at least 2 endpoints: one to return which is the person that should chat with the user, and the second should return a set of topics which user can chose. These topics should have some listed suggestion as well. Tree of nodes with suggestions should not have more than 2 level depth
+- The API must have at least 2 endpoints: one to return which is the person that should chat with the user, and the second should return a set of topics which user can chose.
+
+- These topics should have some listed suggestion as well. Tree of nodes with suggestions should not have more than 2 level depth
 
 ## Frontend
 
@@ -28,15 +30,15 @@ The API must have at least 2 endpoints: one to return which is the person that s
 
 - when depth is reached, display a thank you message.
 
-Good styling is not a must, but feel free to use whatever suits your preference (if you have Frontend focused challenge)
+- good styling is not a must, but feel free to use whatever suits your preference (if you have Frontend focused challenge)
 
-Extra requirements:
+## Extra requirements:
 
-Every piece of logic should be tested with unit test
-Behavior of system should be tested with e2e test
-Write a Github action to run a simple pipeline that contains all requirements above
+- Every piece of logic should be tested with unit test
+- Behavior of system should be tested with e2e test
+- Write a Github action to run a simple pipeline that contains all requirements above
 
-Example of Topic/Suggestions Tree:
+## Example of Topic/Suggestions Tree:
 
 - Football
   - Premier League

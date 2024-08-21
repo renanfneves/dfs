@@ -35,6 +35,7 @@ export function ChoicesSummary() {
         {...register('email')}
         placeholder="johndoe@email.com"
         data-testid="email-input"
+        autoFocus
       />
       <DialogFooter>
         <Button

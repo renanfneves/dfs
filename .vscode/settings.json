@@ -11,5 +11,8 @@
     "Lindley",
     "Roald",
     "Vlissides"
-  ]
+  ],
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///Users/renanflorianoneves/www/renans-career/dfs/.github/workflows/pipeline.yaml"
+  }
 }
