@@ -1,50 +1,76 @@
-# React + TypeScript + Vite
+# DFS - Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web app to handle chat conversation request
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To be able to run this project you need:
 
-## Expanding the ESLint configuration
+- node >= 18 (https://nodejs.org/)
+- pnpm (https://pnpm.io/) as package manager
+- docker
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Steps to Init
 
-- Configure the top-level `parserOptions` property like this:
+Before running this API you need to setup the database and seed default data, following these steps:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Install all dependencies by running `pnpm install` on workspace root folder
+- Create an `.env` file on `apps/web` folder and fill with variables present on `env.sample`
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Running locally
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+After succeeding the `Steps to Init` you are able to run this Web app locally or with all other workspace apps.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Run `pnpm run dev`, if everything is ok you will see the log saying your app is running on Port 5173 (by default). By running `dev` make sure your api is also running.
+
+- Run `pnpm run dev:test`, if everything is ok you will see the log saying your app is running on Port 9999. By running `dev:test` all requests made will be mocked by `msw` handlers, so you don't need to run your api.
+
+## Test
+
+- You are able to run manually unit, integration and e2e tests by running:
+  - `pnpm test` (to run test mixed between integration and unit tests)
+  - `pnpm e2e:test` (to run e2e tests logging in terminal)
+  - `pnpm e2e:test:ui` (to open playwright tests pipeline in ui mode)
+
+# Challenges
+
+## 1. Architecture api requests
+
+- According to the code challenge requirements, the frontend must make two API requests: one to get topics and another to get an agent. However, it is required that the get agent request is made at the moment the modal is opened, always fetching the available agent.
+
+- In the planning of my project, I defined `@tanstack/react-query` as the server-side state manager and designed a step-based layout for each node in the topic tree in the chat UX.
+
+## Requirements
+
+- When the modal opens, a request must be made to get the agent.
+
+## Criteria for the Solution
+
+- The data from the request when the modal opens must always be fresh.
+- The agent should remain the same while the modal instance is open.
+- When a new modal is opened, a new request should be made.
+
+## Solution
+
+- Configure a query with `useQuery`, setting `Infinity` as the `staleTime`.
+- Utilize the query in the first step of the chat.
+- Manage the modal state and clear the query cache in the modal close function.
+
+## 2. Agent Name in Modal Title
+
+- Assign the agent's name to the modal title without making a preemptive request to get the agent.
+
+## Requirements
+
+- Render the agent's name in the modal title.
+
+## Criteria for the Solution
+
+- The modal component is instantiated in the page component.
+- The request to get the agent should only be made when the modal is opened.
+
+## Solution
+
+- Update the custom hook containing the `useQuery` with the request to get the agent to accept a boolean `enabled` parameter.
+- Assign the `enabled` property to the respective `useQuery` option.
+- Utilize the custom hook in the page component, linking the modal's state to the `enabled` property.
